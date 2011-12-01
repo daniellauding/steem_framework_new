@@ -16,6 +16,13 @@
   z-index: 10000;
   overflow: visible;
 
+	.help-inline {
+		line-height:37px;
+		a {
+			color:#e9b030;
+		}
+	}
+
   // Links get text shadow
   a {
     color: @grayLight;
@@ -38,7 +45,7 @@
     float: left;
     display: block;
     padding: 12px 20px 12px 22px;
-    margin-left: -20px; // negative indent to left-align the text down the page
+/*    margin-left: -20px; // negative indent to left-align the text down the page*/
     color: @grayLighter;
     font-size: 14px;
     font-weight: 500;
@@ -110,14 +117,20 @@
   }
 }
 
+
 // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
 // For backwards compatibility, include .topbar .fill
 .topbar-inner,
 .topbar .fill {
-  background-color: #222;
-  #gradient > .vertical(#333, #222);
-  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  .box-shadow(@shadow);
+	background: #1c4162;
+	background: -moz-linear-gradient(top, #1b3e5e 0%, #183754 49%, #152f47 50%, #16324c 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1c4162), color-stop(49%,#183754), color-stop(50%,#152f47), color-stop(100%,#16324c));
+	background: -webkit-linear-gradient(top, #1c4162 0%,#183754 49%,#152f47 50%,#16324c 100%);
+	background: -o-linear-gradient(top, #1c4162 0%,#183754 49%,#152f47 50%,#16324c 100%);
+	background: -ms-linear-gradient(top, #1c4162 0%,#183754 49%,#152f47 50%,#16324c 100%);
+	background: linear-gradient(top, #1c4162 0%,#183754 49%,#152f47 50%,#16324c 100%);
+	@shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+	.box-shadow(@shadow);
 }
 
 
@@ -178,7 +191,7 @@
   // .menu-dropdown for backwards compatibility
   .menu-dropdown,
   .dropdown-menu {
-    background-color: #333;
+    background-color: #203b54;
     // a.menu for backwards compatibility
     a.menu,
     .dropdown-toggle {
@@ -189,10 +202,11 @@
       }
     }
     li a {
-      color: #999;
+      color: @grayLight;
+	  font-size:@basefont - 1px;
       text-shadow: 0 1px 0 rgba(0,0,0,.5);
       &:hover {
-        #gradient > .vertical(#292929,#191919);
+		background:#203b54;
         color: @white;
       }
     }
@@ -318,6 +332,116 @@ a.menu:after,
   }
 }
 
+// CLIENT NAVIGATION
+// ------
+
+.client-nav {
+  	#gradient > .vertical(#ffffff, #f8f8f8);
+	.box-shadow(inset 0 -1px 0px #fff);
+	border-bottom:1px solid #eeeeee;
+	height:60px;
+	width:100%;
+	.client {
+		float:left;
+		line-height:56px;
+		padding-right:15px;
+		height:60px;
+		border-right:1px solid #eeeeee;
+		h1 {
+			line-height:60px;
+			font-weight:normal;
+			color:@gray;
+		}
+		img.client-logo {
+			max-height:45px;
+			display:table-cell;
+			vertical-align:middle;
+		}
+	}
+	.nav {
+		li {
+			position:relative;
+			a {
+				color:@blue;
+				font-weight:bold;
+				padding:20px 15px 20px;
+				border-right:1px solid #eeeeee;
+				&.dropdown-toggle:after {
+					border-top:4px solid @gray
+				}
+				&:hover {
+					background:@white;
+					color:@blueDark;
+					padding-top:21px;
+				}
+			}
+			ul.dropdown-menu {
+				display:block;
+				top:60px;
+				background:#fff;
+				border:1px solid #eeeeee;
+				.box-shadow(0 3px 3px #8b8b8b);
+				padding-top:0;
+				li {
+					a {
+						text-shadow:none;
+						padding:20px 15px 20px;
+						&:hover{background:transparent;border:0;}
+					}
+				}
+			}
+		&.selected {
+			a {
+				background:#fff;
+				height:21px;
+				&:hover {
+					padding:20px 15px 20px;
+				}
+			}
+		}
+		}
+	}
+}
+
+.notify {
+	color:@white;
+	font-size:@basefont - 3px;
+	line-height:@baseline - 5px;
+	.border-radius(14px);
+	width:13px;
+	text-align:center;
+	height:13px;
+	background:#ce4521;
+	display:inline-block;
+	position:absolute;
+	right:6px;
+	top:13px;
+	z-index:999;
+	.box-shadow(0px 1px 0px rgba(0,0,0,0.8));
+}
+
+// SHORT STATS 
+// --------------
+
+.short-stats {
+	border-left:1px solid #eeeeee;
+	padding-left:12px;
+	margin:6px 0 0;
+	float:right;
+	li {
+		line-height:@baseline - 3px;
+		font-size:@basefont - 2px;
+		color:@gray;
+		list-style-type:none;
+		margin:0;
+		padding:0;
+		strong {
+			text-align:left;
+			width:110px;
+			display:inline-block;
+		}
+	}
+}
 
 // TABS AND PILLS
 // --------------
@@ -495,11 +619,16 @@ footer {
 // ------------
 
 .page-header {
+  margin-top: @baseline;
   margin-bottom: @baseline - 1;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid @grayLighter;
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
     margin-bottom: (@baseline / 2) - 1px;
+	font-size:@basefont + 3px;
+	small {
+		font-size:@basefont;
+	}
   }
 }
 
@@ -546,21 +675,19 @@ footer {
   // Button Base
   cursor: pointer;
   display: inline-block;
-  #gradient > .vertical-three-colors(#ffffff, #ffffff, 25%, darken(#ffffff, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
-  padding: 5px 14px 6px;
-  text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  color: #333;
+  background:#1b3e5e;
+  padding: 8px 14px 9px;
+  text-shadow: 0 1px 1px rgba(0,0,0,.45);
+  color: @white;
   font-size: @basefont;
   line-height: normal;
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
+  border: 1px solid #1b3e5e;
   .border-radius(4px);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  .box-shadow(@shadow);
+  .box-shadow(0 1px 0px rgba(255,255,255,0.3) inset);
 
   &:hover {
     background-position: 0 -15px;
-    color: #333;
+    color: #ddefff;
     text-decoration: none;
   }
 
@@ -763,11 +890,14 @@ input[type=submit].btn {
 ul.item-list {
 	overflow:hidden;
 	list-style-type:none;
-	margin:0;
-	padding:0;
+	margin-left:-15px;
+	margin-bottom:0;
+	padding:1px;
 	li {
+		display:block;
 		float:left;
-		margin:0 20px 15px 0;
+		width:200px;
+		margin:0 0 18px 15px;
 		padding:0px 10px 10px;
 		a {
 			text-decoration:none;
@@ -779,6 +909,7 @@ ul.item-list {
 			img {
 				display:block;
 				margin:0 auto;
+				width:100%;
 			}
 			.meta {
 				padding-top:7px;
@@ -797,8 +928,8 @@ ul.item-list {
   height: @baseline * 2;
   margin: @baseline 0;
   ul {
-    float: left;
-    margin: 0;
+	display:table;
+    margin: 0 auto;
     border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
     .border-radius(3px);
@@ -831,23 +962,31 @@ ul.item-list {
   }
 }
 
+// WIDGET
+// -----
+
+.widget {
+	margin:0 0 16px;
+}
 
 // WELLS
 // -----
 
 .well {
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
   margin-bottom: 20px;
-  padding: 19px;
+  padding: 10px 15px 15px;
   min-height: 20px;
-  border: 1px solid #eee;
+  border: 1px solid #eeeeee;
   border: 1px solid rgba(0,0,0,.05);
   .border-radius(4px);
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
   blockquote {
     border-color: #ddd;
     border-color: rgba(0,0,0,.15);
   }
+  h6 {
+	line-height:18px;
+}
 }
 
 

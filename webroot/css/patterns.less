@@ -894,12 +894,16 @@ input[type=submit].btn {
 // Box
 // ----------
 
-.box {
+/*.box {
 	#gradient > .vertical(#F4F4F4, #F2F2F2);
 	@shadow: inset 0 1px 0px #fff, 0 1px 2px #bbbbbb;
 	.box-shadow(@shadow);
 	.border-radius(4px);
 	border:1px solid @grayLighter;
+}*/
+
+.box {
+
 }
 
 // List-items
@@ -908,33 +912,53 @@ input[type=submit].btn {
 ul.item-list {
 	overflow:hidden;
 	list-style-type:none;
-	margin-left:-15px;
+	margin-left:-20px;
 	margin-bottom:0;
 	padding:1px;
 	li {
 		display:block;
 		float:left;
-		width:200px;
-		margin:0 0 18px 15px;
-		padding:0px 10px 10px;
-		a {
+		margin:0 0 18px 20px;
+		min-height:215px;
+		.company-image {
+			width:160px;
+			height:133px;
+			display:block;
+			background:#fbfbfb;
+			.border-radius(3px);
+			border:1px solid @grayLighter;		
 			text-decoration:none;
-			h2 {
+			padding:10px;
+			line-height:130px;
+			text-align:center;
+			a {
+				border:1px dashed @grayLighter;
 				display:block;
-    			font-size: @basefont;
-				color:@blue;
+				background:@white;
+				&:hover {
+					border:1px solid @grayLighter;
+					img {
+						max-width:100px;
+					}
+				}
+				img {
+					max-width:140px;
+					vertical-align:middle;
+				}	
 			}
-			img {
-				display:block;
-				margin:0 auto;
-				width:100%;
-			}
-			.meta {
-				padding-top:7px;
-				color:@gray;
-  				font-size: @basefont * .84;
-				span {display:inline-block;}
-			}
+		}
+		.meta {
+			color:@gray;
+			font-size: @basefont - 2px;
+			text-align:center;
+		}
+		h2 {
+			display:block;
+			font-size: @basefont;
+			color:@blue;
+			text-align:center;
+			line-height:@baseline;
+			margin-top:8px;
 		}
 	}
 }

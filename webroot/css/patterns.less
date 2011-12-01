@@ -746,6 +746,49 @@ input[type=submit].btn {
   }
 }
 
+// Box
+// ----------
+
+.box {
+	#gradient > .vertical(#F4F4F4, #F2F2F2);
+	@shadow: inset 0 1px 0px #fff, 0 1px 2px #bbbbbb;
+	.box-shadow(@shadow);
+	.border-radius(4px);
+	border:1px solid @grayLighter;
+}
+
+// List-items
+// ----------
+
+ul.item-list {
+	overflow:hidden;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	li {
+		float:left;
+		margin:0 20px 15px 0;
+		padding:0px 10px 10px;
+		a {
+			text-decoration:none;
+			h2 {
+				display:block;
+    			font-size: @basefont;
+				color:@blue;
+			}
+			img {
+				display:block;
+				margin:0 auto;
+			}
+			.meta {
+				padding-top:7px;
+				color:@gray;
+  				font-size: @basefont * .84;
+				span {display:inline-block;}
+			}
+		}
+	}
+}
 
 // PAGINATION
 // ----------

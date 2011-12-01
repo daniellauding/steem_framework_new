@@ -31,23 +31,31 @@
   </header>
 
 	<div class="container">
-    <div class="content">
-      <div class="page-header">
-        <span data-src="views/elements/widgets/alert-message.html"></span>
-        <h1>Dashboard <small>Your latest uploads</small></h1>
-      </div>
-      
-      <div class="page-content">
-        
-        <span data-src="views/elements/list-items.html"></span>
-        
-      </div>
+	    
+        <div id="content">
             
-    </div>  
+            <section id="user-area">
+        
+              <div id="login" data-target="login">
+                <span data-src="views/elements/users/login.html"></span>
+              </div>
+              
+              <div id="register" data-target="signup" style="display:none;">
+                <span data-src="views/elements/users/register.html"></span>
+              </div>
+              
+              <div id="lost-password" data-target="forgot" style="display:none;">
+                <span data-src="views/elements/users/lost-password.html"></span>
+              </div>
+             
+          </section>
+            
+        </div>  
+        
 	</div>
 	
 	<footer>
-    <span data-src="views/elements/footer.html"></span>
+        <span data-src="views/elements/footer.html"></span>
 	</footer>
 
 </body>

@@ -25,7 +25,6 @@
   // Hover and active states
   // h3 for backwards compatibility
   h3 a:hover,
-  .brand:hover,
   ul .active > a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
@@ -35,19 +34,19 @@
 
   // Website name
   // h3 left for backwards compatibility
-  h3 {
-    position: relative;
-  }
-  h3 a,
-  .brand {
+  #logo {
     float: left;
     display: block;
-    padding: 8px 20px 12px;
+    padding: 12px 20px 12px 22px;
     margin-left: -20px; // negative indent to left-align the text down the page
-    color: @white;
-    font-size: 20px;
-    font-weight: 200;
+    color: @grayLighter;
+    font-size: 14px;
+    font-weight: 500;
     line-height: 1;
+	background:transparent url(../img/logo.png) no-repeat 0 9px;
+	&:hover {
+		text-decoration:none;
+	}
   }
 
   // Plain text in topbar
